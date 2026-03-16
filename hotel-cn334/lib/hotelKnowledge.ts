@@ -48,8 +48,8 @@ export const ROOM_DOCS: RoomDoc[] = [
     description: "ห้องพักสำหรับ 6 ท่าน ขนาด 45 ตารางเมตร 2 เตียง 2 ห้อง ราคา 5,500 บาทต่อคืน มี Jacuzzi",
   },
   {
-    id: "room-f",
-    type: "Type F",
+    id: "room-d",                // ← แก้จาก room-f
+    type: "Type D",              // ← แก้จาก Type F
     price: 7500,
     capacity: "8 คน",
     size: "60 m²",
@@ -81,7 +81,7 @@ export const KNOWLEDGE_DOCS: KnowledgeDoc[] = [
   {
     id: "amenities-hotel",
     topic: "สิ่งอำนวยความสะดวกของโรงแรม",
-    content: "โรงแรมมีสิ่งอำนวยความสะดวก ได้แก่: สระว่ายน้ำ, ร้านอาหาร, ล็อบบี้, ที่จอดรถ, Wi-Fi ฟรีทุกพื้นที่, บริการซักรีด, ห้องออกกำลังกาย (Type F), Sauna (Type F)",
+    content: "โรงแรมมีสิ่งอำนวยความสะดวก ได้แก่: สระว่ายน้ำ, ร้านอาหาร, ล็อบบี้, ที่จอดรถ, Wi-Fi ฟรีทุกพื้นที่, บริการซักรีด, ห้องออกกำลังกาย (Type D), Sauna (Type D)",
     keywords: ["สิ่งอำนวยความสะดวก", "amenities", "สระว่ายน้ำ", "pool", "wifi", "gym", "sauna", "parking", "ที่จอดรถ"],
   },
   {
@@ -99,15 +99,15 @@ export const KNOWLEDGE_DOCS: KnowledgeDoc[] = [
   {
     id: "price-summary",
     topic: "ราคาห้องพักทุกประเภท",
-    content: "ราคาห้องพักต่อคืน: Type A (2 คน, 24m²) = 3,000 บาท | Type B (4 คน, 32m²) = 4,500 บาท | Type C (6 คน, 45m²) = 5,500 บาท | Type F/Luxury Suite (8 คน, 60m²) = 7,500 บาท",
-    keywords: ["ราคา", "price", "ค่าห้อง", "cost", "บาท", "3000", "4500", "5500", "7500", "ประเภท", "กี่ประเภท", "type a", "type b", "type c", "type f"],
+    content: "ราคาห้องพักต่อคืน: Type A (2 คน, 24m²) = 3,000 บาท | Type B (4 คน, 32m²) = 4,500 บาท | Type C (6 คน, 45m²) = 5,500 บาท | Type D/Luxury Suite (8 คน, 60m²) = 7,500 บาท",
+    keywords: ["ราคา", "price", "ค่าห้อง", "cost", "บาท", "3000", "4500", "5500", "7500", "ประเภท", "กี่ประเภท", "type a", "type b", "type c", "type d"],
   },
 ];
 
 export function retrieveContext(query: string): string {
   const q = query.toLowerCase();
 
-  // ── กรณีพิเศษ: ถามว่า "ห้องมีกี่ประเภท" หรือ "มีห้องอะไรบ้าง" → ส่งทุกห้องเลย ──
+  // กรณีพิเศษ: ถามว่า "ห้องมีกี่ประเภท" หรือ "มีห้องอะไรบ้าง" → ส่งทุกห้องเลย
   const isAskingAllRooms =
     q.includes("กี่ประเภท") ||
     q.includes("มีกี่") ||
@@ -162,7 +162,6 @@ export function retrieveContext(query: string): string {
     return KNOWLEDGE_DOCS.map((d) => `[${d.topic}]: ${d.content}`).join("\n\n");
   }
 
-  // top 5 แทน 3 เพื่อครอบคลุมกว่าเดิม
   scored.sort((a, b) => b.score - a.score);
   return scored.slice(0, 5).map((s) => s.content).join("\n\n");
 }
