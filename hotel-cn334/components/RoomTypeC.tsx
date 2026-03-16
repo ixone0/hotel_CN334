@@ -1,6 +1,5 @@
 import React from 'react';
 import RoomAmenities from './RoomAmenities';
-import BookingForm from './BookingForm';
 
 export default function RoomTypeC() {
   const amenities = [
@@ -39,9 +38,6 @@ export default function RoomTypeC() {
 
       {/* Amenities */}
       <RoomAmenities items={amenities} />
-
-      {/* Booking Form */}
-      <BookingForm roomType="Type C" pricePerNight={5500} />
     </div>
   );
 }

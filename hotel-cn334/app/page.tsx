@@ -57,7 +57,7 @@ export default function Home() {
     },
     {
       id: 'f',
-      roomType: 'Type F',
+      roomType: 'Type D',
       price: '฿ 7,500',
       bedInfo: '3 Beds 3 Rooms 8 Peoples 60 m²',
       amenities: [

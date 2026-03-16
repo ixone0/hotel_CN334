@@ -141,6 +141,8 @@ export default function BookingForm({
         paymentMethod,
       };
 
+      console.log('📤 Sending booking data:', bookingData);
+
       // POST to Mock Server
       const response = await fetch('https://httpbin.org/post', {
         method: 'POST',
@@ -150,11 +152,14 @@ export default function BookingForm({
         body: JSON.stringify(bookingData),
       });
 
+      console.log('📊 Response status:', response.status);
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const responseData = await response.json();
+      console.log('✅ Response received:', responseData);
 
       // Generate booking ID (mock)
       const bookingId = `#${Math.random().toString().slice(2, 8).padEnd(7, '0')}`;

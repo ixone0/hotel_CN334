@@ -1,6 +1,5 @@
 import React from 'react';
 import RoomAmenities from './RoomAmenities';
-import BookingForm from './BookingForm';
 
 export default function RoomTypeA() {
   const amenities = [
@@ -38,9 +37,6 @@ export default function RoomTypeA() {
 
       {/* Amenities */}
       <RoomAmenities items={amenities} />
-
-      {/* Booking Form */}
-      <BookingForm roomType="Type A" pricePerNight={3000} />
     </div>
   );
 }

@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import RoomTypeA from '@/components/RoomTypeA';
 import RoomTypeB from '@/components/RoomTypeB';
 import RoomTypeC from '@/components/RoomTypeC';
-import RoomTypeF from '@/components/RoomTypeF';
+import RoomTypeD from '@/components/RoomTypeD';
 import BookingFormStep from '@/components/BookingFormStep';
 import QRCodeDisplay from '@/components/QRCodeDisplay';
 import BookingSuccess from '@/components/BookingSuccess';
@@ -31,7 +31,7 @@ export default function RoomDetailPage() {
     'type-a': { name: 'Type A', price: 3000, component: <RoomTypeA /> },
     'type-b': { name: 'Type B', price: 4500, component: <RoomTypeB /> },
     'type-c': { name: 'Type C', price: 5500, component: <RoomTypeC /> },
-    'type-f': { name: 'Type F', price: 7500, component: <RoomTypeF /> },
+    'type-d': { name: 'Type D', price: 7500, component: <RoomTypeD /> },
   };
 
   const roomKey = roomType?.toLowerCase().replace(' ', '-');
