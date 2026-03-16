@@ -1,63 +1,106 @@
-import Image from "next/image";
+import Header from '@/components/Header';
+import HotelCard from '@/components/HotelCard';
 
 export default function Home() {
+  const hotels = [
+    {
+      id: 'a',
+      roomType: 'Type A',
+      price: '฿ 3,000',
+      bedInfo: '1 Bed 1 Room 2 Peoples 24 m²',
+      amenities: [
+        'Air conditioning',
+        'Bathrobe',
+        'Body gel or soap',
+        'Cable or satellite television',
+        'Free bottle water',
+        'Fridge',
+        'Hair dryer',
+        'LCD Television',
+        'Other',
+      ],
+    },
+    {
+      id: 'b',
+      roomType: 'Type B',
+      price: '฿ 4,500',
+      bedInfo: '2 Beds 1 Room 4 Peoples 32 m²',
+      amenities: [
+        'Air conditioning',
+        'Bathrobe',
+        'Body gel or soap',
+        'Cable or satellite television',
+        'Free bottle water',
+        'Fridge',
+        'Hair dryer',
+        'LCD Television',
+        'Mini bar',
+      ],
+    },
+    {
+      id: 'c',
+      roomType: 'Type C',
+      price: '฿ 5,500',
+      bedInfo: '2 Beds 2 Rooms 6 Peoples 45 m²',
+      amenities: [
+        'Air conditioning',
+        'Bathrobe',
+        'Body gel or soap',
+        'Cable or satellite television',
+        'Free bottle water',
+        'Fridge',
+        'Hair dryer',
+        'LCD Television',
+        'Jacuzzi',
+        'Desk',
+      ],
+    },
+    {
+      id: 'f',
+      roomType: 'Type F',
+      price: '฿ 7,500',
+      bedInfo: '3 Beds 3 Rooms 8 Peoples 60 m²',
+      amenities: [
+        'Air conditioning',
+        'Bathrobe',
+        'Body gel or soap',
+        'Cable or satellite television',
+        'Free bottle water',
+        'Fridge',
+        'Hair dryer',
+        'LCD Television',
+        'Sauna',
+        'Gym access',
+        'Concierge',
+      ],
+    },
+  ];
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="min-h-screen bg-gray-50">
+      <Header title="Hotel" />
+      <main className="max-w-3xl mx-auto px-4 py-6 pb-12">
+        {/* Description Section */}
+        <div className="bg-white rounded-lg shadow-sm p-6 mb-8">
+          <h2 className="text-xl font-bold mb-4">Description</h2>
+          <p className="text-sm text-gray-700 leading-relaxed mb-4">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veni am, quis nostrud exe rcitation ullamco laboris nisi ut aliquip ex ea commodo conse.
           </p>
+          <p className="text-sm font-semibold text-gray-800">Review 9/10 (302 reviews)</p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+        {/* Room Types Grid */}
+        <div className="grid grid-cols-2 gap-4">
+          {hotels.map((hotel) => (
+            <HotelCard
+              key={hotel.id}
+              id={hotel.id}
+              roomType={hotel.roomType}
+              price={hotel.price}
+              bedInfo={hotel.bedInfo}
+              amenities={hotel.amenities}
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          ))}
         </div>
       </main>
     </div>
