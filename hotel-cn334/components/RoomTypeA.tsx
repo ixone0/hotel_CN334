@@ -16,27 +16,38 @@ export default function RoomTypeA() {
 
   return (
     <div className="p-4">
+      
       {/* Room Info */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">Type A</h2>
-        <p className="text-gray-600 text-sm">
+        {/* ปรับ: ใส่ text-slate-900 ให้สีดำเข้มชัดเจน + font-extrabold และ tracking-tight ให้ฟอนต์ดู Modern ขึ้น */}
+        <h2 className="text-2xl font-extrabold text-slate-900 mb-2 tracking-tight">
+          Type A
+        </h2>
+        {/* ปรับ: เปลี่ยนสีเทาธรรมดาเป็น text-slate-600 และเพิ่ม font-medium ให้อ่านง่ายไม่กลืนจาง */}
+        <p className="text-slate-600 font-medium text-sm">
           1 Bed 1 Room 2 Peoples 24 m²
         </p>
       </div>
 
       {/* Room Image Carousel */}
-      <div className="h-48 bg-gray-300 rounded-lg flex items-center justify-center mb-6">
+      {/* ปรับ: เปลี่ยน bg-gray-300 เป็นพื้นหลังไล่สีอ่อนๆ (gradient) พร้อมขอบ border บางๆ และเงาเบาๆ (shadow-sm) ให้ดูแพงขึ้น */}
+      <div className="h-48 bg-gradient-to-br from-slate-100 to-slate-200 border border-slate-200 shadow-sm rounded-lg flex items-center justify-center mb-6">
         <div className="text-center">
-          <div className="text-gray-600 font-medium mb-2">Type A</div>
+          {/* ปรับ: ตัวหนังสือ Placeholder ให้เป็นสีเทาเข้มขึ้น (text-slate-500) และทำเป็นตัวพิมพ์ใหญ่เพื่อความสวยงาม */}
+          <div className="text-slate-500 font-bold uppercase tracking-widest text-sm mb-2">
+            Type A
+          </div>
           <div className="flex gap-2 justify-center">
-            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+            {/* ปรับ: จุดแรกลองเปลี่ยนเป็นสีฟ้า (Active) ให้ดูเข้าธีมรุ้งๆ ส่วนจุดหลังเป็นสีเทา (Inactive) */}
+            <div className="w-2 h-2 bg-sky-500 rounded-full shadow-sm"></div>
+            <div className="w-2 h-2 bg-slate-300 rounded-full"></div>
           </div>
         </div>
       </div>
 
       {/* Amenities */}
       <RoomAmenities items={amenities} />
+      
     </div>
   );
 }

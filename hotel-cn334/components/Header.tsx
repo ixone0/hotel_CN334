@@ -11,14 +11,24 @@ export default function Header({ title = 'Hotel' }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-gray-200">
       <div className="flex items-center justify-between px-4 py-4 max-w-3xl mx-auto">
+        
+        {/* ปุ่ม Home (ซ้าย) */}
         <Link href="/" className="w-8 h-8 flex items-center justify-center hover:opacity-70 transition-opacity">
           <svg
             className="w-6 h-6"
             fill="none"
-            stroke="currentColor"
             viewBox="0 0 24 24"
           >
+            {/* ฝังสี Gradient ไว้ใน SVG โดยตรง */}
+            <defs>
+              <linearGradient id="gradient-home" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#38bdf8" />   {/* สีฟ้า Sky */}
+                <stop offset="50%" stopColor="#818cf8" />  {/* สีคราม Indigo */}
+                <stop offset="100%" stopColor="#c084fc" /> {/* สีม่วงพาสเทล Purple */}
+              </linearGradient>
+            </defs>
             <path
+              stroke="url(#gradient-home)" // เรียกใช้สี Gradient ตรงนี้
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
@@ -26,15 +36,28 @@ export default function Header({ title = 'Hotel' }: HeaderProps) {
             />
           </svg>
         </Link>
-        <h1 className="text-xl font-semibold">{title}</h1>
-        <div className="w-8 h-8 flex items-center justify-center">
+        
+        {/* ชื่อโรงแรมแบบ Premium Dark */}
+        <h1 className="text-xl md:text-2xl font-black text-slate-800 tracking-tight drop-shadow-md border-b-2 border-sky-400 pb-1">
+          {title}
+        </h1>
+        {/* ปุ่ม Profile (ขวา) */}
+        <div className="w-8 h-8 flex items-center justify-center hover:opacity-70 transition-opacity cursor-pointer">
           <svg
             className="w-6 h-6"
             fill="none"
-            stroke="currentColor"
             viewBox="0 0 24 24"
           >
+            {/* ฝังสี Gradient ไว้ใน SVG โดยตรง (ตั้ง ID ให้ต่างกันกันพลาด) */}
+            <defs>
+              <linearGradient id="gradient-profile" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#38bdf8" />
+                <stop offset="50%" stopColor="#818cf8" />
+                <stop offset="100%" stopColor="#c084fc" />
+              </linearGradient>
+            </defs>
             <path
+              stroke="url(#gradient-profile)" // เรียกใช้สี Gradient ตรงนี้
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
@@ -42,6 +65,7 @@ export default function Header({ title = 'Hotel' }: HeaderProps) {
             />
           </svg>
         </div>
+
       </div>
     </header>
   );

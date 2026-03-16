@@ -18,19 +18,19 @@ export default function RoomTypeB() {
     <div className="p-4">
       {/* Room Info */}
       <div className="mb-6">
-        <h2 className="text-2xl font-bold mb-2">Type B</h2>
-        <p className="text-gray-600 text-sm">
+        <h2 className="text-2xl font-extrabold text-slate-900 mb-2 tracking-tight">Type B</h2>
+        <p className="text-slate-600 font-medium text-sm">
           2 Beds 1 Room 4 Peoples 32 m²
         </p>
       </div>
 
       {/* Room Image Carousel */}
-      <div className="h-48 bg-gray-300 rounded-lg flex items-center justify-center mb-6">
+      <div className="h-48 bg-gradient-to-br from-slate-100 to-slate-200 border border-slate-200 shadow-sm rounded-lg flex items-center justify-center mb-6">
         <div className="text-center">
-          <div className="text-gray-600 font-medium mb-2">Type B</div>
+          <div className="text-slate-500 font-bold uppercase tracking-widest text-sm mb-2">Type B</div>
           <div className="flex gap-2 justify-center">
-            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+            <div className="w-2 h-2 bg-sky-500 rounded-full shadow-sm"></div>
+            <div className="w-2 h-2 bg-slate-300 rounded-full"></div>
           </div>
         </div>
       </div>

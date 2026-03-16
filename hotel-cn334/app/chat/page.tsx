@@ -6,7 +6,7 @@ export default function ChatPage() {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* ใช้ Header component เดิมจาก repo */}
-      <Header title="Hotel" />
+      <Header title="Cn334 Hotel" />
 
       <main className="max-w-2xl mx-auto px-4 py-8">
         {/* Page title */}

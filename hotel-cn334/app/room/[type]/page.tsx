@@ -60,7 +60,7 @@ export default function RoomDetailPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header title="Hotel" />
+      <Header title="Cn334 Hotel" />
       <div className="max-w-3xl mx-auto px-4 py-6 pb-12">
         {/* Header with Back Button */}
         <button
