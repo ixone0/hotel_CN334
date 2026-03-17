@@ -25,12 +25,12 @@ export default function RoomTypeB() {
       </div>
 
       {/* Room Image Carousel */}
-      <div className="h-48 bg-gradient-to-br from-slate-100 to-slate-200 border border-slate-200 shadow-sm rounded-lg flex items-center justify-center mb-6">
+      <div className="h-48 bg-gradient-to-br from-stone-100 to-amber-50 border border-amber-100 shadow-sm rounded-lg flex items-center justify-center mb-6">
         <div className="text-center">
-          <div className="text-slate-500 font-bold uppercase tracking-widest text-sm mb-2">Type B</div>
+          <div className="text-slate-600 font-bold uppercase tracking-widest text-sm mb-2">Type B</div>
           <div className="flex gap-2 justify-center">
-            <div className="w-2 h-2 bg-sky-500 rounded-full shadow-sm"></div>
-            <div className="w-2 h-2 bg-slate-300 rounded-full"></div>
+            <div className="w-2 h-2 bg-amber-600 rounded-full shadow-sm"></div>
+            <div className="w-2 h-2 bg-amber-200 rounded-full"></div>
           </div>
         </div>
       </div>

@@ -4,20 +4,20 @@ import ChatBox from '@/components/ChatBox';
 
 export default function ChatPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* ใช้ Header component เดิมจาก repo */}
+    <div className="min-h-screen bg-stone-50">
+      {/* Use Header component */}
       <Header title="Cn334 Hotel" />
 
       <main className="max-w-2xl mx-auto px-4 py-8">
         {/* Page title */}
         <div className="mb-6 text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-1">AI Concierge</h1>
-          <p className="text-sm text-gray-500">
+          <h1 className="text-2xl font-bold text-slate-900 mb-1">AI Concierge</h1>
+          <p className="text-sm text-slate-500">
             ถามข้อมูลห้องพัก การจอง หรือบริการโรงแรมได้เลย
           </p>
-          <div className="inline-flex items-center gap-1.5 mt-2 bg-blue-50 border border-blue-200 rounded-full px-3 py-1">
-            <span className="w-2 h-2 rounded-full bg-blue-400 animate-pulse" />
-            <span className="text-xs text-blue-600 font-medium">RAG-powered — ข้อมูลโรงแรมจริง</span>
+          <div className="inline-flex items-center gap-1.5 mt-2 bg-amber-50 border border-amber-200 rounded-full px-3 py-1">
+            <span className="w-2 h-2 rounded-full bg-amber-600 animate-pulse" />
+            <span className="text-xs text-amber-700 font-medium">RAG-powered — ข้อมูลโรงแรมจริง</span>
           </div>
         </div>
 

@@ -77,7 +77,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50 font-sans">
+    <div className="min-h-screen bg-stone-50 font-sans">
       <Header title="Cn334 Hotel" /> 
 
       <main className="max-w-5xl mx-auto px-4 py-8 pb-16">
@@ -89,7 +89,7 @@ export default function Home() {
             alt="Cn334 Hotel Exterior" 
             className="object-cover w-full h-full"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-transparent to-transparent"></div>
           
           <div className="absolute bottom-6 left-6 md:bottom-8 md:left-8 text-white">
             <h1 className="text-3xl md:text-4xl font-bold mb-2 tracking-tight">Cn334 Hotel</h1>
@@ -114,9 +114,9 @@ export default function Home() {
             </div>
             
             {/* Review Badge */}
-            <div className="flex flex-col items-center bg-slate-50 p-4 rounded-2xl border border-slate-100 min-w-[140px]">
+            <div className="flex flex-col items-center bg-stone-50 p-4 rounded-2xl border border-amber-100 min-w-[140px]">
               <div className="flex items-baseline gap-1">
-                <span className="text-3xl font-extrabold text-indigo-600">9.0</span>
+                <span className="text-3xl font-extrabold text-amber-700">9.0</span>
                 <span className="text-sm text-slate-500 font-medium">/10</span>
               </div>
               <span className="text-sm font-semibold text-slate-700 mt-1">Excellent</span>

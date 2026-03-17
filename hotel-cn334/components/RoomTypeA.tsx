@@ -30,17 +30,14 @@ export default function RoomTypeA() {
       </div>
 
       {/* Room Image Carousel */}
-      {/* ปรับ: เปลี่ยน bg-gray-300 เป็นพื้นหลังไล่สีอ่อนๆ (gradient) พร้อมขอบ border บางๆ และเงาเบาๆ (shadow-sm) ให้ดูแพงขึ้น */}
-      <div className="h-48 bg-gradient-to-br from-slate-100 to-slate-200 border border-slate-200 shadow-sm rounded-lg flex items-center justify-center mb-6">
+      <div className="h-48 bg-gradient-to-br from-stone-100 to-amber-50 border border-amber-100 shadow-sm rounded-lg flex items-center justify-center mb-6">
         <div className="text-center">
-          {/* ปรับ: ตัวหนังสือ Placeholder ให้เป็นสีเทาเข้มขึ้น (text-slate-500) และทำเป็นตัวพิมพ์ใหญ่เพื่อความสวยงาม */}
-          <div className="text-slate-500 font-bold uppercase tracking-widest text-sm mb-2">
+          <div className="text-slate-600 font-bold uppercase tracking-widest text-sm mb-2">
             Type A
           </div>
           <div className="flex gap-2 justify-center">
-            {/* ปรับ: จุดแรกลองเปลี่ยนเป็นสีฟ้า (Active) ให้ดูเข้าธีมรุ้งๆ ส่วนจุดหลังเป็นสีเทา (Inactive) */}
-            <div className="w-2 h-2 bg-sky-500 rounded-full shadow-sm"></div>
-            <div className="w-2 h-2 bg-slate-300 rounded-full"></div>
+            <div className="w-2 h-2 bg-amber-600 rounded-full shadow-sm"></div>
+            <div className="w-2 h-2 bg-amber-200 rounded-full"></div>
           </div>
         </div>
       </div>

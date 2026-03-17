@@ -74,6 +74,16 @@ export async function POST(req: NextRequest) {
 
     if (!response.ok) {
       console.error("Gemini API error", response.status, rawText);
+      // Log เพิ่มเติมเพื่อ debug
+      console.error("Request headers:", {
+        "Content-Type": "application/json",
+        "x-goog-api-key": apiKey ? "***SET***" : "***NOT SET***",
+      });
+      console.error("Request body keys:", Object.keys(JSON.parse(JSON.stringify({
+        system_instruction: { parts: [{ text: "..." }] },
+        contents: "...",
+        generationConfig: "...",
+      }))));
       return NextResponse.json(
         { error: `Gemini error ${response.status}: ${rawText.slice(0, 200)}` },
         { status: response.status }

@@ -187,7 +187,7 @@ export default function BookingForm({
   };
 
   // ตัวช่วยสร้างคลาสสำหรับ Input เพื่อให้ UI เป็นมาตรฐานเดียวกัน
-  const inputClassName = "w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500 transition-all";
+  const inputClassName = "w-full bg-stone-50 border border-amber-200 rounded-xl px-4 py-3 text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500/50 focus:border-amber-500 transition-all";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -203,9 +203,9 @@ export default function BookingForm({
       )}
 
       {/* Date Selection Card */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+      <div className="bg-white rounded-2xl border border-amber-100 shadow-sm p-5">
         <div className="flex items-center gap-2 mb-4 text-slate-800">
-          <svg className="w-5 h-5 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h14M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
           <span className="font-bold">Select Dates</span>
@@ -233,17 +233,17 @@ export default function BookingForm({
       </div>
 
       {/* Guest Count Card */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+      <div className="bg-white rounded-2xl border border-amber-100 shadow-sm p-5">
         <p className="font-bold text-slate-800 mb-4">Guest Count</p>
         <div className="space-y-4">
           {/* Adult */}
           <div className="flex items-center justify-between">
             <span className="text-sm font-semibold text-slate-700">Adult</span>
-            <div className="flex items-center gap-3 bg-slate-50 p-1 rounded-xl border border-slate-200">
+            <div className="flex items-center gap-3 bg-stone-50 p-1 rounded-xl border border-amber-200">
               <button
                 type="button"
                 onClick={() => handleGuestChange('adults', -1)}
-                className="w-8 h-8 flex items-center justify-center bg-white border border-slate-200 text-slate-600 hover:text-sky-600 rounded-lg font-bold transition-colors shadow-sm active:scale-95"
+                className="w-8 h-8 flex items-center justify-center bg-white border border-amber-200 text-slate-600 hover:text-amber-700 rounded-lg font-bold transition-colors shadow-sm active:scale-95"
               >
                 −
               </button>
@@ -256,7 +256,7 @@ export default function BookingForm({
               <button
                 type="button"
                 onClick={() => handleGuestChange('adults', 1)}
-                className="w-8 h-8 flex items-center justify-center bg-white border border-slate-200 text-slate-600 hover:text-sky-600 rounded-lg font-bold transition-colors shadow-sm active:scale-95"
+                className="w-8 h-8 flex items-center justify-center bg-white border border-amber-200 text-slate-600 hover:text-amber-700 rounded-lg font-bold transition-colors shadow-sm active:scale-95"
               >
                 +
               </button>
@@ -269,11 +269,11 @@ export default function BookingForm({
               <span className="text-sm font-semibold text-slate-700 block">Child</span>
               <p className="text-xs text-slate-500">(2-12 yrs.)</p>
             </div>
-            <div className="flex items-center gap-3 bg-slate-50 p-1 rounded-xl border border-slate-200">
+            <div className="flex items-center gap-3 bg-stone-50 p-1 rounded-xl border border-amber-200">
               <button
                 type="button"
                 onClick={() => handleGuestChange('children', -1)}
-                className="w-8 h-8 flex items-center justify-center bg-white border border-slate-200 text-slate-600 hover:text-sky-600 rounded-lg font-bold transition-colors shadow-sm active:scale-95"
+                className="w-8 h-8 flex items-center justify-center bg-white border border-amber-200 text-slate-600 hover:text-amber-700 rounded-lg font-bold transition-colors shadow-sm active:scale-95"
               >
                 −
               </button>
@@ -286,7 +286,7 @@ export default function BookingForm({
               <button
                 type="button"
                 onClick={() => handleGuestChange('children', 1)}
-                className="w-8 h-8 flex items-center justify-center bg-white border border-slate-200 text-slate-600 hover:text-sky-600 rounded-lg font-bold transition-colors shadow-sm active:scale-95"
+                className="w-8 h-8 flex items-center justify-center bg-white border border-amber-200 text-slate-600 hover:text-amber-700 rounded-lg font-bold transition-colors shadow-sm active:scale-95"
               >
                 +
               </button>
@@ -296,7 +296,7 @@ export default function BookingForm({
       </div>
 
       {/* Contact Information Card */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+      <div className="bg-white rounded-2xl border border-amber-100 shadow-sm p-5">
         <h3 className="font-bold text-slate-800 mb-4">Contact Information</h3>
 
         <div className="grid grid-cols-3 gap-3 mb-4">
@@ -348,7 +348,7 @@ export default function BookingForm({
       </div>
 
       {/* Payment Methods Card */}
-      <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+      <div className="bg-white rounded-2xl border border-amber-100 shadow-sm p-5">
         <h3 className="font-bold text-slate-800 mb-1">Payment methods</h3>
         <p className="text-xs text-slate-500 mb-4">
           We accept the following payment methods.
@@ -359,8 +359,8 @@ export default function BookingForm({
               key={method.id} 
               className={`flex items-center cursor-pointer p-3 rounded-xl border transition-all ${
                 paymentMethod === method.id 
-                  ? 'border-sky-500 bg-sky-50' 
-                  : 'border-slate-200 hover:border-sky-300'
+                  ? 'border-amber-500 bg-amber-50' 
+                  : 'border-amber-200 hover:border-amber-300'
               }`}
             >
               <input
@@ -369,9 +369,9 @@ export default function BookingForm({
                 value={method.id}
                 checked={paymentMethod === method.id}
                 onChange={(e) => handlePaymentChange(e.target.value)}
-                className="w-4 h-4 text-sky-600 border-slate-300 focus:ring-sky-500"
+                className="w-4 h-4 text-amber-700 border-amber-300 focus:ring-amber-500"
               />
-              <span className={`ml-3 text-sm font-medium ${paymentMethod === method.id ? 'text-sky-900' : 'text-slate-700'}`}>
+              <span className={`ml-3 text-sm font-medium ${paymentMethod === method.id ? 'text-amber-900' : 'text-slate-700'}`}>
                 {method.label}
               </span>
             </label>
@@ -380,7 +380,7 @@ export default function BookingForm({
       </div>
 
       {/* Total Price & Submit Box */}
-      <div className="bg-white p-5 rounded-2xl shadow-lg border border-slate-100 sticky bottom-4 z-10 flex flex-col gap-4">
+      <div className="bg-white p-5 rounded-2xl shadow-lg border border-amber-100 sticky bottom-4 z-10 flex flex-col gap-4">
         <div className="flex justify-between items-end">
           <div>
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">Total Price</p>
@@ -389,7 +389,7 @@ export default function BookingForm({
             </p>
           </div>
           <div className="text-right">
-            <span className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-sky-500 to-indigo-600">
+            <span className="text-2xl font-extrabold text-amber-700">
               ฿{totalPrice.toLocaleString()}
             </span>
           </div>
@@ -398,7 +398,7 @@ export default function BookingForm({
         <button
           type="submit"
           disabled={isLoading}
-          className="w-full py-4 rounded-xl font-bold text-white text-lg bg-gradient-to-r from-sky-400 via-indigo-500 to-purple-500 hover:shadow-lg hover:opacity-90 transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
+          className="w-full py-4 rounded-xl font-bold text-white text-lg bg-amber-700 hover:bg-amber-800 hover:shadow-lg transition-all active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isLoading ? (
             <span className="flex items-center justify-center gap-2">

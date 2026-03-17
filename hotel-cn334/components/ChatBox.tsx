@@ -10,11 +10,12 @@ interface Message {
   timestamp: string;
 }
 
+// 📝 แก้ไข: ปรับคำถามด่วนให้ดูเป็นหมวดหมู่ทางการ ไม่ใช่ภาษาพูดห้วนๆ
 const QUICK_QUESTIONS = [
-  'ห้องมีกี่ประเภท?',
-  'ราคาห้องเท่าไหร่?',
-  'เวลา check-in กี่โมง?',
-  'ชำระเงินช่องทางไหนได้บ้าง?',
+  'สอบถามประเภทห้องพักและราคา',
+  'นโยบายเวลา Check-in / Check-out',
+  'สิ่งอำนวยความสะดวกในโรงแรม',
+  'ช่องทางการชำระเงินที่รองรับ',
 ];
 
 export default function ChatBox() {
@@ -22,7 +23,8 @@ export default function ChatBox() {
     {
       id: '0',
       role: 'model',  // ← "model" ไม่ใช่ "assistant"
-      content: 'สวัสดีครับ! 👋 ผม HotelBot AI Concierge ยินดีให้บริการครับ มีอะไรให้ช่วยไหม?',
+      // 📝 แก้ไข: ปรับคำทักทายให้ดูเป็นผู้ช่วยระดับพรีเมียม ตัดอิโมจิที่ดูเล่นๆ ออก
+      content: 'สวัสดีครับ ผม AI Concierge ประจำโรงแรม ยินดีต้อนรับครับ ไม่ทราบว่ามีข้อมูลส่วนใดที่ต้องการให้ผมช่วยดูแล หรือแนะนำเพิ่มเติมไหมครับ?',
       timestamp: new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }),
     },
   ]);
@@ -85,7 +87,8 @@ export default function ChatBox() {
       ]);
     } catch (err) {
       console.error('Chat error:', err);
-      setError('เกิดข้อผิดพลาด กรุณาลองใหม่');
+      // 📝 แก้ไข: ปรับคำแจ้งเตือน Error ให้ดูเป็นทางการ
+      setError('ไม่สามารถเชื่อมต่อระบบได้ในขณะนี้ กรุณาลองใหม่อีกครั้ง');
       setMessages(messages);
     } finally {
       setIsLoading(false);
@@ -93,15 +96,17 @@ export default function ChatBox() {
   };
 
   return (
-    <div className="flex flex-col h-[600px] bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+    <div className="flex flex-col h-[600px] bg-white rounded-lg shadow-md border border-amber-100 overflow-hidden">
       {/* Header */}
-      <div className="bg-gray-800 text-white px-4 py-3 flex items-center gap-3">
-        <div className="w-9 h-9 rounded-full bg-yellow-500 flex items-center justify-center font-bold text-gray-900 text-sm">
+      <div className="bg-slate-900 text-white px-4 py-3 flex items-center gap-3">
+        <div className="w-9 h-9 rounded-full bg-amber-600 flex items-center justify-center font-bold text-white text-sm">
           AI
         </div>
         <div>
-          <p className="font-semibold text-sm">HotelBot — AI Concierge</p>
-          <p className="text-xs text-gray-400">powered by Gemini + RAG</p>
+          {/* 📝 แก้ไข: เปลี่ยนชื่อให้เข้ากับแบรนด์โรงแรม */}
+          <p className="font-semibold text-sm">Cn334 Hotel — AI Concierge</p>
+          {/* 📝 แก้ไข: ปรับคำอธิบายเทคโนโลยีให้ดูน่าเชื่อถือว่าเอาข้อมูลมาจากแหล่งอ้างอิงของโรงแรมจริงๆ */}
+          <p className="text-xs text-gray-400">RAG-Powered — ข้อมูลอัปเดตจากระบบโรงแรมโดยตรง</p>
         </div>
         <div className="ml-auto flex items-center gap-1.5">
           <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
@@ -110,13 +115,14 @@ export default function ChatBox() {
       </div>
 
       {/* Quick Questions */}
+      {/* ส่วนปุ่มกดนำทางที่ผมปรับคำใน Array ด้านบนแล้ว จะมา Render ตรงนี้ครับ */}
       {messages.length === 1 && (
         <div className="px-4 pt-3 pb-1 flex flex-wrap gap-2">
           {QUICK_QUESTIONS.map((q) => (
             <button
               key={q}
               onClick={() => handleSend(q)}
-              className="text-xs border border-gray-300 rounded-full px-3 py-1.5 text-gray-600 hover:bg-gray-100 hover:border-gray-400 transition-colors"
+              className="text-xs border border-amber-200 rounded-full px-3 py-1.5 text-slate-700 hover:bg-stone-100 hover:border-amber-300 transition-colors"
             >
               {q}
             </button>
@@ -125,26 +131,26 @@ export default function ChatBox() {
       )}
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-3 bg-gray-50">
+      <div className="flex-1 overflow-y-auto px-4 py-3 flex flex-col gap-3 bg-stone-50">
         {messages.map((msg) => (
           <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             {msg.role === 'model' && (
-              <div className="w-7 h-7 rounded-full bg-gray-800 flex items-center justify-center text-white text-xs font-bold mr-2 flex-shrink-0 mt-auto mb-4">
+              <div className="w-7 h-7 rounded-full bg-slate-900 flex items-center justify-center text-white text-xs font-bold mr-2 flex-shrink-0 mt-auto mb-4">
                 AI
               </div>
             )}
             <div className="max-w-[75%]">
               <div className={`px-4 py-2.5 rounded-2xl text-sm leading-relaxed shadow-sm
                 ${msg.role === 'user'
-                  ? 'bg-gray-800 text-white rounded-br-sm'
-                  : 'bg-white text-gray-800 border border-gray-200 rounded-bl-sm'
+                  ? 'bg-slate-900 text-white rounded-br-sm'
+                  : 'bg-white text-slate-900 border border-amber-100 rounded-bl-sm'
                 }`}
               >
                 {msg.content.split('\n').map((line, i, arr) => (
                   <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
                 ))}
               </div>
-              <p className={`text-[10px] text-gray-400 mt-1 ${msg.role === 'user' ? 'text-right' : 'text-left'}`}>
+              <p className={`text-[10px] text-slate-500 mt-1 ${msg.role === 'user' ? 'text-right' : 'text-left'}`}>
                 {msg.timestamp}
               </p>
             </div>
@@ -153,13 +159,13 @@ export default function ChatBox() {
 
         {isLoading && (
           <div className="flex justify-start items-end gap-2">
-            <div className="w-7 h-7 rounded-full bg-gray-800 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
+            <div className="w-7 h-7 rounded-full bg-slate-900 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
               AI
             </div>
-            <div className="bg-white border border-gray-200 px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm flex gap-1 items-center">
-              <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-              <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-              <span className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+            <div className="bg-white border border-amber-100 px-4 py-3 rounded-2xl rounded-bl-sm shadow-sm flex gap-1 items-center">
+              <span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+              <span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+              <span className="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
             </div>
           </div>
         )}
@@ -174,20 +180,21 @@ export default function ChatBox() {
       </div>
 
       {/* Input */}
-      <div className="px-4 py-3 bg-white border-t border-gray-200 flex gap-2 items-center">
+      <div className="px-4 py-3 bg-white border-t border-amber-100 flex gap-2 items-center">
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleSend()}
-          placeholder="ถามเกี่ยวกับโรงแรม..."
+          // 📝 แก้ไข: ปรับ Placeholder ให้ดูเป็นประโยคเชิญชวนแบบสุภาพ
+          placeholder="สอบถามข้อมูลการเข้าพัก หรือบริการของโรงแรม..."
           disabled={isLoading}
-          className="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-gray-500 transition-colors disabled:opacity-50 bg-gray-50"
+          className="flex-1 border border-amber-200 rounded-full px-4 py-2 text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:border-amber-400 transition-colors disabled:opacity-50 bg-stone-50"
         />
         <button
           onClick={() => handleSend()}
           disabled={!input.trim() || isLoading}
-          className="bg-gray-800 text-white rounded-full w-9 h-9 flex items-center justify-center hover:bg-gray-700 disabled:opacity-40 disabled:cursor-not-allowed transition-colors font-bold text-lg"
+          className="bg-slate-900 text-white rounded-full w-9 h-9 flex items-center justify-center hover:bg-slate-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors font-bold text-lg"
         >
           ↑
         </button>

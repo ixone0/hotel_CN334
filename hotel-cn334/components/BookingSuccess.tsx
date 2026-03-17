@@ -10,79 +10,87 @@ interface BookingSuccessProps {
 
 export default function BookingSuccess({ data, onClose }: BookingSuccessProps) {
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-      <div className="bg-white rounded-lg shadow-lg max-w-md w-full p-6 text-center">
-        {/* Close Button */}
+    // ปรับพื้นหลังให้เบลอ (backdrop-blur-sm) และใช้สี slate-900/40 ให้ดูพรีเมียมขึ้น
+    <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm flex items-center justify-center p-4 z-50 animate-in fade-in duration-200">
+      
+      {/* ตัวกล่อง Modal: ขอบโค้ง 3xl, เงาหนาขึ้น */}
+      <div className="bg-white rounded-3xl shadow-2xl max-w-md w-full p-6 md:p-8 text-center relative animate-in zoom-in-95 duration-200">
+        
+        {/* Close Button แบบ Modern */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-600 hover:text-gray-800 text-2xl"
+          className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 rounded-full transition-colors"
+          aria-label="Close"
         >
-          ×
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
 
-        {/* Icon */}
-        <div className="mb-6">
-          <svg
-            className="w-16 h-16 text-green-500 mx-auto"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
+        {/* Success Icon: Modern luxury amber theme */}
+        <div className="mb-6 relative">
+          <div className="w-20 h-20 bg-gradient-to-br from-amber-400 to-amber-600 rounded-full flex items-center justify-center text-white mx-auto shadow-lg shadow-amber-200">
+            <svg
+              className="w-10 h-10"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={3}
+                d="M5 13l4 4L19 7"
+              />
+            </svg>
+          </div>
         </div>
 
         {/* Success Message */}
-        <h2 className="text-2xl font-bold mb-2">Status: Success</h2>
-        <p className="text-lg font-semibold text-gray-800 mb-6">{data.bookingId}</p>
+        <h2 className="text-2xl font-extrabold text-slate-900 mb-1 tracking-tight">Booking Confirmed!</h2>
+        <p className="text-sm text-slate-500 mb-2">Your booking ID is</p>
+        <p className="text-xl font-bold text-amber-700 mb-6 tracking-wider">
+          {data.bookingId}
+        </p>
 
-        {/* Booking Details */}
-        <div className="bg-gray-50 rounded-lg p-4 text-left text-sm space-y-2 mb-6">
-          <div className="border-b pb-2">
-            <p className="text-gray-600">Guest Name</p>
-            <p className="font-semibold text-gray-800">{data.guestName}</p>
+        {/* Booking Details Card */}
+        <div className="bg-stone-50 border border-amber-100 rounded-2xl p-5 text-left text-sm space-y-3 mb-8 shadow-inner">
+          <div className="flex justify-between items-center border-b border-amber-200 pb-3">
+            <p className="text-slate-500 font-medium">Guest Name</p>
+            <p className="font-bold text-slate-900">{data.guestName}</p>
           </div>
-          <div className="border-b pb-2">
-            <p className="text-gray-600">Check-in</p>
-            <p className="font-semibold text-gray-800">
+          <div className="flex justify-between items-center border-b border-slate-200 pb-3">
+            <p className="text-slate-500 font-medium">Room Type</p>
+            <p className="font-bold text-slate-900">{data.roomType}</p>
+          </div>
+          <div className="flex justify-between items-center border-b border-slate-200 pb-3">
+            <p className="text-slate-500 font-medium">Check-in</p>
+            <p className="font-bold text-slate-900 text-right">
               {new Date(data.checkIn).toLocaleDateString('th-TH', {
                 year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-              })} 14:00
+                month: 'short',
+                day: 'numeric',
+              })} <span className="text-slate-500 text-xs ml-1">14:00</span>
             </p>
           </div>
-          <div className="border-b pb-2">
-            <p className="text-gray-600">Check-out</p>
-            <p className="font-semibold text-gray-800">
+          <div className="flex justify-between items-center">
+            <p className="text-slate-500 font-medium">Check-out</p>
+            <p className="font-bold text-slate-900 text-right">
               {new Date(data.checkOut).toLocaleDateString('th-TH', {
                 year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-              })} 12:00
+                month: 'short',
+                day: 'numeric',
+              })} <span className="text-slate-500 text-xs ml-1">12:00</span>
             </p>
-          </div>
-          <div>
-            <p className="text-gray-600">Room Type</p>
-            <p className="font-semibold text-gray-800">{data.roomType}</p>
           </div>
         </div>
 
-        {/* Close Button */}
+        {/* Done Button */}
         <button
           onClick={onClose}
-          className="w-full bg-gray-800 text-white font-semibold py-3 rounded-lg hover:bg-gray-900 transition-colors"
+          className="w-full py-4 rounded-xl font-bold text-white text-lg bg-amber-700 hover:bg-amber-800 hover:shadow-lg transition-all active:scale-[0.98]"
         >
-          Done
+          Back to Home
         </button>
       </div>
     </div>
