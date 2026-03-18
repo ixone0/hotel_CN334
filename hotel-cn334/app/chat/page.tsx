@@ -5,11 +5,9 @@ import ChatBox from '@/components/ChatBox';
 export default function ChatPage() {
   return (
     <div className="min-h-screen bg-stone-50">
-      {/* Use Header component */}
       <Header title="Cn334 Hotel" />
 
       <main className="max-w-2xl mx-auto px-4 py-8">
-        {/* Page title */}
         <div className="mb-6 text-center">
           <h1 className="text-2xl font-bold text-slate-900 mb-1">AI Concierge</h1>
           <p className="text-sm text-slate-500">
@@ -21,7 +19,6 @@ export default function ChatPage() {
           </div>
         </div>
 
-        {/* ChatBox — จัดการ state และ RAG API call ภายใน */}
         <ChatBox />
 
         <p className="text-center text-gray-400 text-xs mt-4">

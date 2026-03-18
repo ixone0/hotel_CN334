@@ -48,8 +48,8 @@ export const ROOM_DOCS: RoomDoc[] = [
     description: "ห้องพักสำหรับ 6 ท่าน ขนาด 45 ตารางเมตร 2 เตียง 2 ห้อง ราคา 5,500 บาทต่อคืน มี Jacuzzi",
   },
   {
-    id: "room-d",                // ← แก้จาก room-f
-    type: "Type D",              // ← แก้จาก Type F
+    id: "room-d",              
+    type: "Type D",              
     price: 7500,
     capacity: "8 คน",
     size: "60 m²",

@@ -19,14 +19,7 @@ export async function POST(req: NextRequest) {
     const lastUserMessage = [...messages].reverse().find((m) => m.role === "user");
     const query = lastUserMessage?.content ?? "";
 
-    // RAG: ค้นหา context จาก hotelKnowledge.ts
     const context = retrieveContext(query);
-
-    // ── DEBUG LOG: ดูใน terminal (npm run dev) ว่า RAG ดึงอะไรมา ──
-    console.log("\n========== RAG DEBUG ==========");
-    console.log("Query   :", query);
-    console.log("Context :", context);
-    console.log("================================\n");
 
     const systemPrompt = [
       "You are HotelBot, an AI Concierge. Answer only hotel-related questions.",
@@ -69,12 +62,10 @@ export async function POST(req: NextRequest) {
       }
     );
 
-    // อ่านเป็น text ก่อนเสมอ ป้องกัน "Unexpected end of JSON input"
     const rawText = await response.text();
 
     if (!response.ok) {
       console.error("Gemini API error", response.status, rawText);
-      // Log เพิ่มเติมเพื่อ debug
       console.error("Request headers:", {
         "Content-Type": "application/json",
         "x-goog-api-key": apiKey ? "***SET***" : "***NOT SET***",

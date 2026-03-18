@@ -2,15 +2,13 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 
-// ── Interface ต้อง match กับ route.ts ──
 interface Message {
   id: string;
-  role: 'user' | 'model';  // Gemini ใช้ "model" ไม่ใช่ "assistant"
+  role: 'user' | 'model';  
   content: string;
   timestamp: string;
 }
 
-// 📝 แก้ไข: ปรับคำถามด่วนให้ดูเป็นหมวดหมู่ทางการ ไม่ใช่ภาษาพูดห้วนๆ
 const QUICK_QUESTIONS = [
   'สอบถามประเภทห้องพักและราคา',
   'นโยบายเวลา Check-in / Check-out',
@@ -22,8 +20,7 @@ export default function ChatBox() {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '0',
-      role: 'model',  // ← "model" ไม่ใช่ "assistant"
-      // 📝 แก้ไข: ปรับคำทักทายให้ดูเป็นผู้ช่วยระดับพรีเมียม ตัดอิโมจิที่ดูเล่นๆ ออก
+      role: 'model',
       content: 'สวัสดีครับ ผม AI Concierge ประจำโรงแรม ยินดีต้อนรับครับ ไม่ทราบว่ามีข้อมูลส่วนใดที่ต้องการให้ผมช่วยดูแล หรือแนะนำเพิ่มเติมไหมครับ?',
       timestamp: new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }),
     },
@@ -63,8 +60,6 @@ export default function ChatBox() {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          // ส่งเฉพาะ role + content ไป route.ts
-          // role จะเป็น "user" หรือ "model" ตรงกับ Gemini spec
           messages: updatedMessages.map((m) => ({
             role: m.role,
             content: m.content,
@@ -80,14 +75,13 @@ export default function ChatBox() {
         ...prev,
         {
           id: genId(),
-          role: 'model',  // ← "model"
+          role: 'model', 
           content: data.message,
           timestamp: new Date().toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' }),
         },
       ]);
     } catch (err) {
       console.error('Chat error:', err);
-      // 📝 แก้ไข: ปรับคำแจ้งเตือน Error ให้ดูเป็นทางการ
       setError('ไม่สามารถเชื่อมต่อระบบได้ในขณะนี้ กรุณาลองใหม่อีกครั้ง');
       setMessages(messages);
     } finally {
@@ -103,9 +97,7 @@ export default function ChatBox() {
           AI
         </div>
         <div>
-          {/* 📝 แก้ไข: เปลี่ยนชื่อให้เข้ากับแบรนด์โรงแรม */}
           <p className="font-semibold text-sm">Cn334 Hotel — AI Concierge</p>
-          {/* 📝 แก้ไข: ปรับคำอธิบายเทคโนโลยีให้ดูน่าเชื่อถือว่าเอาข้อมูลมาจากแหล่งอ้างอิงของโรงแรมจริงๆ */}
           <p className="text-xs text-gray-400">RAG-Powered — ข้อมูลอัปเดตจากระบบโรงแรมโดยตรง</p>
         </div>
         <div className="ml-auto flex items-center gap-1.5">
@@ -114,8 +106,6 @@ export default function ChatBox() {
         </div>
       </div>
 
-      {/* Quick Questions */}
-      {/* ส่วนปุ่มกดนำทางที่ผมปรับคำใน Array ด้านบนแล้ว จะมา Render ตรงนี้ครับ */}
       {messages.length === 1 && (
         <div className="px-4 pt-3 pb-1 flex flex-wrap gap-2">
           {QUICK_QUESTIONS.map((q) => (
@@ -186,7 +176,6 @@ export default function ChatBox() {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleSend()}
-          // 📝 แก้ไข: ปรับ Placeholder ให้ดูเป็นประโยคเชิญชวนแบบสุภาพ
           placeholder="สอบถามข้อมูลการเข้าพัก หรือบริการของโรงแรม..."
           disabled={isLoading}
           className="flex-1 border border-amber-200 rounded-full px-4 py-2 text-sm text-slate-800 placeholder-slate-500 focus:outline-none focus:border-amber-400 transition-colors disabled:opacity-50 bg-stone-50"
