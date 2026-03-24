@@ -29,11 +29,10 @@ export default function Header({ title = 'Hotel' }: HeaderProps) {
           </svg>
         </Link>
         
-        {/* ชื่อโรงแรมแบบ Premium Dark */}
         <h1 className="text-xl md:text-2xl font-black text-slate-900 tracking-tight border-b-2 border-amber-600 pb-1">
           {title}
         </h1>
-        {/* ปุ่ม Profile (ขวา) */}
+
         <div className="w-8 h-8 flex items-center justify-center hover:opacity-70 transition-opacity cursor-pointer">
           <svg
             className="w-6 h-6 text-amber-600"

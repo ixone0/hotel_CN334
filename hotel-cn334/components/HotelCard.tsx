@@ -18,7 +18,6 @@ export default function HotelCard({
   bedInfo,
   amenities,
 }: HotelCardProps) {
-  // Convert room ID to URL format (e.g., "a" -> "type-a")
   const roomUrl = `type-${id}`;
 
   return (
