@@ -34,7 +34,9 @@ export default function Home() {
         'Fridge', 
         'Hair dryer', 
         'LCD Television', 
-        'Mini bar'
+        'Mini bar',
+        'Couch'
+
       ],
     },
     {
