@@ -107,6 +107,7 @@ export const KNOWLEDGE_DOCS: KnowledgeDoc[] = [
 export function retrieveContext(query: string): string {
   const q = query.toLowerCase();
 
+  // กรณีพิเศษ: ถามว่า "ห้องมีกี่ประเภท" หรือ "มีห้องอะไรบ้าง" → ส่งทุกห้องเลย
   const isAskingAllRooms =
     q.includes("กี่ประเภท") ||
     q.includes("มีกี่") ||

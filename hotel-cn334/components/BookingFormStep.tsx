@@ -143,8 +143,8 @@ export default function BookingForm({
 
       console.log('📤 Sending booking data:', bookingData);
 
-      // POST to Backend API
-      const response = await fetch('http://localhost:3340/api/bookings', {
+      // POST to Mock Server
+      const response = await fetch('https://httpbin.org/post', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -161,8 +161,8 @@ export default function BookingForm({
       const responseData = await response.json();
       console.log('✅ Response received:', responseData);
 
-      // Use bookingId from backend response
-      const bookingId = responseData.bookingId;
+      // Generate booking ID (mock)
+      const bookingId = `#${Math.random().toString().slice(2, 8).padEnd(7, '0')}`;
 
       // Prepare QR Code data
       const qrData: QRCodeData = {
